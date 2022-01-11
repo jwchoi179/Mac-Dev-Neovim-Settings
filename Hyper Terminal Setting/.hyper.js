@@ -11,7 +11,7 @@ module.exports = {
 
             // [Optional] Set the rgba() app background opacity, useful when enableVibrance is true
             // OPTIONS: From 0.1 to 1
-            backgroundOpacity: '0.15',
+            backgroundOpacity: '0.1',
 
             // [Optional] Set the accent color for the current active tab
             accentColor: '#64FFDA',
@@ -19,7 +19,11 @@ module.exports = {
             // [Optional] Mac Only. Need restart. Enable the vibrance and blurred background
             // OPTIONS: 'dark', 'ultra-dark', 'bright'
             // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect.
-            vibrancy: 'dark'
+            vibrancy: 'ultra-dark'
+        },
+        verminal: {
+            fontFamily: 'Hack Nerd Font',
+            fontSize: 17
         },
         // choose either `'stable'` for receiving highly polished,
         // or `'canary'` for less polished but more frequent updates
@@ -150,7 +154,7 @@ module.exports = {
     //   `hyperpower`
     //   `@company/project`
     //   `project#1.0.1`
-    plugins: ["hyper-material-theme"],
+    plugins: ["hyper-blink", "hyper-material-theme"],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed

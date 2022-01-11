@@ -25,6 +25,7 @@ if has("nvim")
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'windwp/nvim-autopairs'
+  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

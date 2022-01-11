@@ -8,6 +8,10 @@ scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
 
+if has ("Syntax")
+  syntax on
+endif
+
 set nocompatible
 set number
 syntax enable
@@ -68,7 +72,7 @@ set formatoptions+=r
 " Highlights "{{{
 " ---------------------------------------------------------------------
 set cursorline
-"set cursorcolumn
+" set cursorcolumn
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
@@ -136,9 +140,9 @@ if exists("&termguicolors") && exists("&winblend")
   set pumblend=5
   set background=dark
   " Use NeoSolarized
-  " let g:neosolarized_termtrans=1
-  " runtime ./colors/NeoSolarized.vim
-  " colorscheme NeoSolarized
+  let g:neosolarized_termtrans=1
+  runtime ./colors/NeoSolarized.vim
+  colorscheme NeoSolarized
 endif
 
 "}}}
@@ -148,4 +152,10 @@ endif
 set exrc
 "}}}
 
-" vim: set foldmethod=marker foldlevel=0:
+" custom setting for clangformat
+let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['--style="{IndentWidth: 4}"']
+\}
+let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_enabled_c = ['clangformat']

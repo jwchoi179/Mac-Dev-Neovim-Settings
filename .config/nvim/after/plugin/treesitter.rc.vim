@@ -22,7 +22,16 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     "swift",
     "html",
-    "scss"
+    "scss",
+    "javascript",
+    "java",
+    "cpp",
+    "c",
+    "python",
+    "cmake",
+    "css",
+    "html",
+    "dart"
   },
 }
 
