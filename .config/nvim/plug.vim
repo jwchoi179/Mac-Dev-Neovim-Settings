@@ -6,8 +6,12 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-
+Plug 'shime/vim-livedown'
 if has("nvim")
+  Plug 'mattn/emmet-vim'
+  Plug 'dense-analysis/ale'
+  Plug 'mfussenegger/nvim-lint'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
@@ -24,8 +28,8 @@ if has("nvim")
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
