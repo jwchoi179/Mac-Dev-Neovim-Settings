@@ -154,7 +154,43 @@ set exrc
 "html:5,, 이렇게 커맨드를 html 파일에 입력하면 html5 기본 뼈대가 생성된다.
 let g:user_emmet_leader_key=','
 
+"저장 커맨드를 사용하면 자동으로prettier 적용
+"현재 해당 플러그인을 주석처리한 상태
+"Neoformat Prettier을 적용하기 위함
+"let g:prettier#autoformat = 1
+"let g:prettier#autoformat_require_pragma = 0
+
+autocmd FileType scss setl iskeyword+=@-@
+
+let g:javascript_plugin_jsdoc = 1
+
 lua << EOF
-require('lspconfig').quick_lint_js.setup {}
+-- 현재 CocInstall coc-eslint로 인해 eslint를 사용 중이다.
+-- eslint는 jsx 문법을 지원하기에 이것을 사용
+-- 하지만 eslint는 quick_lint_js보다 좀 약한 느낌이 있음
+-- require('lspconfig').quick_lint_js.setup {}
+
+require'nvim-treesitter.configs'.setup {
+  autotag = {
+    enable = true,
+  }
+}
+
 EOF
+
+" custom setting for clangformat
+let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['--style="{IndentWidth: 2}"']
+\}
+let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_enabled_c = ['clangformat']
+
+" Neformat user prettier
+let g:neoformat_try_node_exe = 1
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 

@@ -1,17 +1,20 @@
 if has("nvim")
   let g:plug_home = stdpath('data') . '/plugged'
 endif
-
 call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shime/vim-livedown'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'sbdchd/neoformat'
+
 if has("nvim")
+  Plug 'alvan/vim-closetag'
   Plug 'mattn/emmet-vim'
   Plug 'dense-analysis/ale'
   Plug 'mfussenegger/nvim-lint'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
