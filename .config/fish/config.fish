@@ -50,12 +50,13 @@ set -g theme_newline_prompt '> '
 
 # aliases
 alias ls "exa --icons"
-alias la "exa -a"
-alias l "ll --git"
-alias lla "ll -a --git"
-alias g "git"
-alias c "clear"
-alias e "exit"
+alias la "exa -a --icons"
+
+alias l "ll -a --git"
+alias g git
+alias c clear
+alias e exit
+alias b "cd build && cmake .. && make"
 
 command -qv nvim && alias vim nvim
 
@@ -74,15 +75,15 @@ set -gx PATH $GOPATH/bin $PATH
 
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
-  status --is-command-substitution; and return
+    status --is-command-substitution; and return
 
-  if test -f .nvmrc; and test -r .nvmrc;
-    nvm use
-  else
-  end
+    if test -f .nvmrc; and test -r .nvmrc
+        nvm use
+    else
+    end
 end
 
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
-  source $LOCAL_CONFIG
+    source $LOCAL_CONFIG
 end

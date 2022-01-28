@@ -1,8 +1,6 @@
 " Fundamentals "{{{
 " ---------------------------------------------------------------------
-
-" init autocmd
-autocmd!
+" init autocmd autocmd!
 " set script encoding
 scriptencoding utf-8
 " stop loading config if it's on tiny or small
@@ -11,7 +9,7 @@ if !1 | finish | endif
 set nocompatible
 set number
 syntax enable
-set fileencodings=utf-8,sjis,euc-jp,latin
+set fileencodings=utf-8,sjis,euc-kr,ms949
 set encoding=utf-8
 set title
 set autoindent
@@ -164,20 +162,6 @@ autocmd FileType scss setl iskeyword+=@-@
 
 let g:javascript_plugin_jsdoc = 1
 
-lua << EOF
--- 현재 CocInstall coc-eslint로 인해 eslint를 사용 중이다.
--- eslint는 jsx 문법을 지원하기에 이것을 사용
--- 하지만 eslint는 quick_lint_js보다 좀 약한 느낌이 있음
--- require('lspconfig').quick_lint_js.setup {}
-
-require'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  }
-}
-
-EOF
-
 " custom setting for clangformat
 let g:neoformat_cpp_clangformat = {
     \ 'exe': 'clang-format',
@@ -193,4 +177,49 @@ augroup fmt
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat
 augroup END
+
+" NerdTree Shortcuts
+" ctrl + w + w 로 창 간 이동이 가능하다
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Show git status at NerdTree
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 000000
+let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0
+
+lua << EOF
+-- 현재 CocInstall coc-eslint로 인해 eslint를 사용 중이다.
+-- eslint는 jsx 문법을 지원하기에 이것을 사용
+-- 하지만 eslint는 quick_lint_js보다 좀 약한 느낌이 있음
+-- require('lspconfig').quick_lint_js.setup {}
+
+require'nvim-treesitter.configs'.setup {
+  autotag = {
+    enable = true,
+  }
+}
+
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.clangd.setup{}
+-- html 서버는 모두 리액트를 하면 에러를 일으킴
+-- require'lspconfig'.html.setup{}
+require'lspconfig'.emmet_ls.setup{}
+require'lspconfig'.cmake.setup{}
+require'lspconfig'.groovyls.setup{}
+EOF
 

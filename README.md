@@ -73,6 +73,22 @@ I choose Neovim because of the Better developer enviorment. \
 Neovim provides lots of plugins to use better than normal vim mode. \
 Checkout the 'plug.vim' files in _".config/nvim"_ to find out what is in my plugin list.
 
+#### Plugins Info
+
+Entering vim mode
+
+##### lspsaga
+
+1. gh : lsp_finder
+2. gp : preview_definition
+3. K : hover_doc
+4. gr : rename function
+5. Ctrl + d : open terminal in buff
+
+##### lspconfig
+
+1. gd : go to definition
+
 ### Vscode
 
 Vscode is one of the most famous text editor.
