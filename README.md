@@ -1,4 +1,4 @@
-# JWC's Terminal Settings
+# Settings
 
 터미널을 세팅하면서 전체적인 맥을 다루는 방법과 네오빔 및 개발 환경을 세팅하는 방법을 공부했습니다.
 
@@ -84,10 +84,22 @@ Entering vim mode
 3. K : hover_doc
 4. gr : rename function
 5. Ctrl + d : open terminal in buff
+6. ;f : find files in vim mode
 
 ##### lspconfig
 
 1. gd : go to definition
+
+##### coc.nvim
+
+lspsaga로 인해서 미리 선정한 단축키가 있습니다. \
+lsp와 coc, 두 가지 방법으로 설정하여서 동일한 기능 구현을 위해 다르게 설정하였습니다. \
+coc에 해당되지 않는 언어는 coc-settings를 참고하십시오.
+
+1. hd : go to definition
+2. gn : rename
+3. [g : diagnostic-prev
+4. g] : diagnostic-next
 
 ### Vscode
 

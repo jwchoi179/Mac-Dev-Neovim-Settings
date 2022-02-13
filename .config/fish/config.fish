@@ -52,11 +52,13 @@ set -g theme_newline_prompt '> '
 alias ls "exa --icons"
 alias la "exa -a --icons"
 
+alias cl "clear && l"
 alias l "ll -a --git"
 alias g git
 alias c clear
 alias e exit
 alias b "cd build && cmake .. && make"
+alias g++ "g++ -std=c++17"
 
 command -qv nvim && alias vim nvim
 

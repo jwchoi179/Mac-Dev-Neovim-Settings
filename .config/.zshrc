@@ -15,7 +15,7 @@ export ZSH="/Users/choijiwoong/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -114,36 +114,38 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /Users/choijiwoong/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/choijiwoong/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 eval $(/opt/homebrew/bin/brew shellenv)
 eval "$(fasd --init auto)"
 
-DEFAULT_USER="$(whoami)"
-
-alias ls='exa'
+# exa alias command
+alias ls='exa --icons'
 alias la='exa -a --icons'
 alias ll='exa --long --icons --git'
-alias lla='l --icons --git'
+alias l='exa -a --long --header --icons --git'
+# alias lla='l --icons --git'
 
 # equivalents with Git Status on by Default
-alias ilsg='logo-ls -D'
-alias ilag='logo-ls -AD'
-alias illg='logo-ls -alD'
+alias ils='logo-ls -D'
+alias ila='logo-ls -AD'
+alias ill='logo-ls -alD'
 
 alias vim='nvim'
 alias c='clear'
 alias g='git'
+alias gs='git status -s'
 alias e='exit'
 alias f='fish'
+alias b="cd build && cmake .. && make"
+alias cl='clear && l'
+alias g++="g++ -std=c++17"
 
-alias z='fasd_cd -d'     # 디렉터리 이동
-alias zz='fasd_cd -d -i' # 디렉터리 선택 후 이동
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 plugins+=(zsh-vi-mode)
 
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -171,3 +173,7 @@ zle -N zle-keymap-select
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home
+export PATH=${PATH}:$JAVA_HOME/bin

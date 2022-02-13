@@ -3,6 +3,7 @@ if has("nvim")
 endif
 call plug#begin()
 
+Plug 'preservim/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shime/vim-livedown'
@@ -14,8 +15,7 @@ Plug 'mfussenegger/nvim-jdtls'
 Plug 'natebosch/vim-lsc'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-
-
+Plug 'tveskag/nvim-blame-line'
 
 if has("nvim")
   Plug 'alvan/vim-closetag'
@@ -35,6 +35,7 @@ if has("nvim")
   Plug 'hrsh7th/nvim-cmp'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'ryanoasis/vim-devicons'
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'

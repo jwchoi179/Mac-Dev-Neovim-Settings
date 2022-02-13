@@ -1,24 +1,15 @@
 {
-  "diagnostic.errorSign": "✖",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.infoSign": "ℹ",
-  "diagnostic.hintSign": "➤",
-  "suggest.noselect": false,
-  "suggest.echodocSupport": true,
-  "codeLens.enable": true,
-  "signature.enable": true,
-  "suggest.preferCompleteThanJumpPlaceholder": true,
-  "eslint.autoFixOnSave": true,
-  "tsserver.implicitProjectConfig.experimentalDecorators": true,
-  "python.venvFolders": [
-    "envs",
-    ".pyenv",
-    ".direnv",
-    "~/.local/share/virtualenvs",
-    "~/.cache/pypoetry/virtualenvs"
-  ],
-  "python.workspaceSymbols.exclusionPatterns": [],
-  "python.jediEnabled": false,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
+  // Settings for Virtual Text
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextPrefix": " ",
+
+  // coc-java settings
+  "java.home": "/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/home",
+  "java.autobuild.enabled": true,
+
+  // disabled coc-langs
+  "clangd.enabled": false,
+  "python.linting.enabled": false,
+  "tsserver.enable": false
 }

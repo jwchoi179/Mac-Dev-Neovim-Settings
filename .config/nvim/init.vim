@@ -9,7 +9,7 @@ if !1 | finish | endif
 set nocompatible
 set number
 syntax enable
-set fileencodings=utf-8,sjis,euc-kr,ms949
+set fileencodings=utf-8,euc-kr,ms949
 set encoding=utf-8
 set title
 set autoindent
@@ -95,8 +95,6 @@ au BufNewFile,BufRead *.tsx setf typescriptreact
 " Markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.mdx set filetype=markdown
-" Flow
-au BufNewFile,BufRead *.flow set filetype=javascript
 " Fish
 au BufNewFile,BufRead *.fish set filetype=fish
 
@@ -163,12 +161,13 @@ autocmd FileType scss setl iskeyword+=@-@
 let g:javascript_plugin_jsdoc = 1
 
 " custom setting for clangformat
-let g:neoformat_cpp_clangformat = {
-    \ 'exe': 'clang-format',
-    \ 'args': ['--style="{IndentWidth: 2}"']
-\}
+"let g:neoformat_cpp_clangformat = {
+"    \ 'exe': 'clang-format',
+"    \ 'args': ['--style="{IndentWidth: 2}"']
+"\}
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_enabled_c = ['clangformat']
+let g:neoformat_disabled_java = ['clangformat']
 
 " Neformat user prettier
 let g:neoformat_try_node_exe = 1
@@ -202,6 +201,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 000000
 let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0
 
+"let g:lsc_server_commands = {'java': '/Users/choijiwoong/java-language-server/dist/lang_server_mac.sh'}
+
 lua << EOF
 -- 현재 CocInstall coc-eslint로 인해 eslint를 사용 중이다.
 -- eslint는 jsx 문법을 지원하기에 이것을 사용
@@ -214,6 +215,7 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+-- CocConfig 세팅으로 인하여 전부 안해도 됨
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.clangd.setup{}
 -- html 서버는 모두 리액트를 하면 에러를 일으킴
@@ -221,5 +223,40 @@ require'lspconfig'.clangd.setup{}
 require'lspconfig'.emmet_ls.setup{}
 require'lspconfig'.cmake.setup{}
 require'lspconfig'.groovyls.setup{}
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- you can specify color or cterm_color instead of specifying both of them
+ -- DevIcon will be appended to `name`
+ override = {
+  zsh = {
+    icon = "?",
+    color = "#428850",
+    cterm_color = "65",
+    name = "Zsh"
+  }
+ };
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+--require'lspconfig'.java_language_server.setup{}
+
 EOF
+
+" coc keymaps settings
+" coc.nvim updatetime
+set updatetime=300
+
+" GoTo code navigation.
+nmap <silent> hd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+
+" Symbol renaming.
+nmap <silent> gn <Plug>(coc-rename)
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
